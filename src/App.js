@@ -8,12 +8,20 @@ function App() {
   const [showAddForm, setShowAddForm] = useState(false); // Track if the "Add New Post" form should be shown
   const [newPostTitle, setNewPostTitle] = useState('');
   const [newPostBody, setNewPostBody] = useState('');
+  const [cartIds, setCartIds] = useState([]);
 
   // Fetch all posts on component mount
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/')
       .then(response => response.json())
       .then(data => setPosts(data))
+      .catch(error => console.error('Error fetching data:', error));
+
+    fetch('https://my-json-server.typicode.com/visalnaqvi/ecommerce/cart/')
+      .then(response => response.json())
+      .then(data => {
+        setCartIds(data)
+      })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
@@ -88,6 +96,19 @@ function App() {
       <button className="add-button" onClick={handleAddFormToggle}>
         Add New Post
       </button>
+      {
+        cartIds && 
+        <div className='cart'>
+        {posts && posts.map(post=>(
+          cartIds.includes(post.id) ? 
+          <div>
+            <img className='thumbnail' src={post.img} />
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </div> : <div></div>
+        ))}
+        </div>
+      }
       {showAddForm && (
         <div className="add-form">
           <input
@@ -104,14 +125,15 @@ function App() {
           <button onClick={handleAddPost}>Create Post</button>
         </div>
       )}
-      <ul>
+      <div className='container'>
         {posts && posts.map(post => (
-          <li key={post.id}>
-            <div className="post-card">
+
+            <div key={post.id} className="post-card">
               {editingPostId === post.id ? (
                 <EditForm post={post} onUpdate={handleUpdatePost} onDelete={handleDeletePost} />
               ) : (
                 <>
+                <img src={post.img} />
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
                   <button onClick={() => handleEditClick(post.id)}>Edit</button>
@@ -124,9 +146,9 @@ function App() {
                 </>
               )}
             </div>
-          </li>
+          
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

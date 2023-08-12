@@ -7,10 +7,17 @@ body {
 }
 
 .App {
-  text-align: center;
   padding: 20px;
 }
 
+
+
+.container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
 h1 {
   color: #333;
 }
@@ -25,6 +32,10 @@ li {
 }
 
 .post-card {
+  border-radius: 10px;
+
+  width: 400px;
+  margin: 20px;
   border: 1px solid #ddd;
   padding: 20px;
   background-color: white;
@@ -36,6 +47,7 @@ h3 {
 }
 
 button {
+  
   background-color: #6dd5ed;
   color: white;
   border: none;
@@ -109,6 +121,14 @@ button.delete-button:hover {
 
 .add-form button:hover {
   background-color: #48b1bf;
+}
+
+img{
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px #00000010;
+  margin-bottom: 20px;
 }
 
 /* ... (remaining styles) */
