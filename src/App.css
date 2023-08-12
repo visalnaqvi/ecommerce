@@ -131,4 +131,50 @@ img{
   margin-bottom: 20px;
 }
 
-/* ... (remaining styles) */
+.cart{
+  width: 50vw;
+  background-color: #48b1bf;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  right: 10px;
+  top: 80px;
+  max-height: 500px;
+  overflow-y: scroll;
+
+}
+
+.cart-item{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.cart img{
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+
+.cart-button{
+  position: relative;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-to-cart-btn{
+  background-color: #27ae60;
+}
+
+.add-to-cart-btn:hover{
+  background-color: #219452;
+}

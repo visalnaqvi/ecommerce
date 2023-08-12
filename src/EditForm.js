@@ -3,6 +3,7 @@ import './EditForm.css';
 function EditForm({ post, onUpdate }) {
   const [editedTitle, setEditedTitle] = useState(post.title);
   const [editedBody, setEditedBody] = useState(post.body);
+  const [editedPrice, setEditedPrice] = useState(post.price);
 
   const handleUpdatePost = () => {
     if (!editedTitle || !editedBody) return;
@@ -11,6 +12,7 @@ function EditForm({ post, onUpdate }) {
       ...post,
       title: editedTitle,
       body: editedBody,
+      price:editedPrice
     };
 
     onUpdate(editedPost);
@@ -27,6 +29,11 @@ function EditForm({ post, onUpdate }) {
         value={editedBody}
         onChange={(e) => setEditedBody(e.target.value)}
       ></textarea>
+      <input
+        type="text"
+        value={editedPrice}
+        onChange={(e) => setEditedPrice(e.target.value)}
+      />
       <button onClick={handleUpdatePost}>Save</button>
     </div>
   );

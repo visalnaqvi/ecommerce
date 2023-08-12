@@ -7,8 +7,11 @@ function App() {
   const [editingPostId, setEditingPostId] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false); // Track if the "Add New Post" form should be shown
   const [newPostTitle, setNewPostTitle] = useState('');
+  const [newPostPrice, setNewPostPrice] = useState('');
   const [newPostBody, setNewPostBody] = useState('');
+  const [newPostImg, setNewPostImg] = useState('');
   const [cartIds, setCartIds] = useState([]);
+  const [isCartOpen , setIsCartOpen] = useState(false);
 
   // Fetch all posts on component mount
   useEffect(() => {
@@ -30,7 +33,7 @@ function App() {
   };
 
   const handleUpdatePost = (updatedPost) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${updatedPost.id}`, {
+    fetch(`https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/${updatedPost.id}`, {
       method: 'PUT',
       body: JSON.stringify(updatedPost),
       headers: {
@@ -49,7 +52,7 @@ function App() {
   };
 
   const handleDeletePost = (postId) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+    fetch(`https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/${postId}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -70,10 +73,12 @@ function App() {
     const newPost = {
       title: newPostTitle,
       body: newPostBody,
-      userId: 1, // You can adjust the user ID as needed
+      price: newPostPrice,
+      rating: 0,
+      img:newPostImg
     };
 
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('https://my-json-server.typicode.com/visalnaqvi/ecommerce/products', {
       method: 'POST',
       body: JSON.stringify(newPost),
       headers: {
@@ -86,25 +91,49 @@ function App() {
         setShowAddForm(false);
         setNewPostTitle('');
         setNewPostBody('');
+        setNewPostPrice('');
+        setNewPostImg('');
       })
       .catch(error => console.error('Error adding new post:', error));
   };
 
+  const handleCartOpen = ()=>{
+      setIsCartOpen(!isCartOpen);
+  }
+
+  const addToCart = (id) => {
+    if (cartIds.includes(id)) {
+        let newCart = cartIds.filter((i) => i !== id);
+        setCartIds(newCart);
+    } else {
+        setCartIds([...cartIds, id]);
+    }
+}
+
   return (
     <div className="App">
-      <h1>Posts</h1>
-      <button className="add-button" onClick={handleAddFormToggle}>
-        Add New Post
-      </button>
+      <div className='header'>
+        <h1>Products</h1>
+        <div>
+        <button className="add-button" onClick={handleAddFormToggle}>
+          Add New Product
+        </button>
+        <button className="cart-button" onClick={handleCartOpen}>
+          Cart <span>{cartIds.length}</span>
+        </button>
+        </div>
+      </div>
       {
-        cartIds && 
+        isCartOpen && 
         <div className='cart'>
         {posts && posts.map(post=>(
           cartIds.includes(post.id) ? 
-          <div>
+          <div className='cart-item'>
             <img className='thumbnail' src={post.img} />
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
+            <div>
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+            </div>
           </div> : <div></div>
         ))}
         </div>
@@ -118,10 +147,22 @@ function App() {
             onChange={(e) => setNewPostTitle(e.target.value)}
           />
           <textarea
-            placeholder="Body"
+            placeholder="Discription"
             value={newPostBody}
             onChange={(e) => setNewPostBody(e.target.value)}
           ></textarea>
+          <input
+            type="text"
+            placeholder="Price"
+            value={newPostPrice}
+            onChange={(e) => setNewPostPrice(e.target.value)}
+          />
+           <input
+            type="text"
+            placeholder="Image Link"
+            value={newPostImg}
+            onChange={(e) => setNewPostImg(e.target.value)}
+          />
           <button onClick={handleAddPost}>Create Post</button>
         </div>
       )}
@@ -136,13 +177,17 @@ function App() {
                 <img src={post.img} />
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
+                  <p>Rating: {post.rating} Stars</p>
+                  <h4>Rs. {post.price} /-</h4> 
                   <button onClick={() => handleEditClick(post.id)}>Edit</button>
+                  <button className='add-to-cart-btn' onClick={() => addToCart(post.id)}>{cartIds.includes(post.id)?"Remove from Cart":"Add To Cart"}</button>
                   <button
                     className="delete-button"
                     onClick={() => handleDeletePost(post.id)}
                   >
                     Delete
                   </button>
+                  
                 </>
               )}
             </div>
