@@ -13,7 +13,7 @@ function App() {
   const [cartIds, setCartIds] = useState([]);
   const [isCartOpen , setIsCartOpen] = useState(false);
 
-  // Fetch all posts on component mount
+  // Fetch all product on component mount
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/')
       .then(response => response.json())
@@ -32,6 +32,7 @@ function App() {
     setEditingPostId(postId);
   };
 
+  //update porduct
   const handleUpdatePost = (updatedPost) => {
     fetch(`https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/${updatedPost.id}`, {
       method: 'PUT',
@@ -51,6 +52,7 @@ function App() {
       .catch(error => console.error('Error updating post:', error));
   };
 
+  //delete product
   const handleDeletePost = (postId) => {
     fetch(`https://my-json-server.typicode.com/visalnaqvi/ecommerce/products/${postId}`, {
       method: 'DELETE',
@@ -63,10 +65,12 @@ function App() {
       .catch(error => console.error('Error deleting post:', error));
   };
 
+  //show hide add new product form
   const handleAddFormToggle = () => {
     setShowAddForm(!showAddForm);
   };
 
+  //add new post
   const handleAddPost = () => {
     if (!newPostTitle || !newPostBody) return;
 
@@ -97,10 +101,13 @@ function App() {
       .catch(error => console.error('Error adding new post:', error));
   };
 
+
+  //handle cart open and close
   const handleCartOpen = ()=>{
       setIsCartOpen(!isCartOpen);
   }
 
+  //add item to cart
   const addToCart = (id) => {
     if (cartIds.includes(id)) {
         let newCart = cartIds.filter((i) => i !== id);
@@ -133,6 +140,7 @@ function App() {
             <div>
               <h3>{post.title}</h3>
               <p>{post.body}</p>
+              <button style={{marginLeft:"10px"}} className='add-to-cart-btn' onClick={() => addToCart(post.id)}>{cartIds.includes(post.id)?"Remove from Cart":"Add To Cart"}</button>
             </div>
           </div> : <div></div>
         ))}
