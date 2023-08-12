@@ -4,30 +4,40 @@
       "id": 1,
       "title": "Chair",
       "body":"Lorem ist pest mst tuti ittu chi tai. Lorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi tai",
+      "price":"100",
+      "rating":"4.6",
       "img":"https://plus.unsplash.com/premium_photo-1668046135207-061641d36b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
     },
     {
         "id": 2,
         "title": "Chair",
         "body":"Lorem ist pest mst tuti ittu chi tai. Lorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi tai",
+        "price":"100",
+        "rating":"4.6",  
         "img":"https://plus.unsplash.com/premium_photo-1668046135207-061641d36b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
       },
       {
         "id": 3,
         "title": "Chair",
         "body":"Lorem ist pest mst tuti ittu chi tai. Lorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi tai",
+        "price":"100",
+        "rating":"4.6",  
         "img":"https://plus.unsplash.com/premium_photo-1668046135207-061641d36b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
       },
       {
         "id": 4,
         "title": "Chair",
         "body":"Lorem ist pest mst tuti ittu chi tai. Lorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi tai",
+        "price":"100",
+        "rating":"4.6",  
         "img":"https://plus.unsplash.com/premium_photo-1668046135207-061641d36b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
       },
       {
         "id": 5,
         "title": "Chair",
         "body":"Lorem ist pest mst tuti ittu chi tai. Lorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi taiLorem ist pest mst tuti ittu chi tai",
+        "price":"100",
+        "rating":"4.6",  
         "img":"https://plus.unsplash.com/premium_photo-1668046135207-061641d36b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
       }
   ],
